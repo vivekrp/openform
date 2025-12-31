@@ -74,7 +74,7 @@ export function QuestionEditor({ question, onUpdate, onDelete }: QuestionEditorP
       <Separator />
 
       {/* Type-specific settings */}
-      {(question.type === 'multiple_choice' || question.type === 'multi_select') && (
+      {(question.type === 'dropdown' || question.type === 'checkboxes') && (
         <div>
           <Label className="text-sm font-medium mb-3 block">Options</Label>
           <div className="space-y-2">

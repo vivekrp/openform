@@ -29,6 +29,7 @@ export function FormPlayer({ form }: FormPlayerProps) {
   const [direction, setDirection] = useState(0)
   
   const containerRef = useRef<HTMLDivElement>(null)
+  const skipNextValidationRef = useRef(false)
 
   const currentQuestion = questions[currentIndex]
   const isLastQuestion = currentIndex === questions.length - 1
@@ -86,7 +87,11 @@ export function FormPlayer({ form }: FormPlayerProps) {
   }, [currentQuestion, answers, errors])
 
   const goToNext = useCallback((skipValidation?: boolean) => {
-    if (!skipValidation && !validateCurrentQuestion()) return
+    // Check both the parameter and the ref for skip validation
+    const shouldSkip = skipValidation || skipNextValidationRef.current
+    skipNextValidationRef.current = false // Reset the ref
+    
+    if (!shouldSkip && !validateCurrentQuestion()) return
     
     if (isLastQuestion) {
       handleSubmit()
@@ -334,7 +339,7 @@ export function FormPlayer({ form }: FormPlayerProps) {
                 className="mb-6 flex items-center gap-2"
               >
                 <span 
-                  className="text-sm font-medium"
+                  className="text-base font-medium"
                   style={{ color: theme.primaryColor }}
                 >
                   {currentIndex + 1}
@@ -381,7 +386,19 @@ export function FormPlayer({ form }: FormPlayerProps) {
                   onChange={(value) => updateAnswer(currentQuestion.id, value)}
                   theme={theme}
                   error={errors[currentQuestion.id]}
-                  onSubmit={goToNext}
+                  onSubmit={(skipValidation?: boolean) => {
+                    if (skipValidation) {
+                      skipNextValidationRef.current = true
+                    }
+                    goToNext(skipValidation)
+                  }}
+                  onClearError={() => {
+                    if (errors[currentQuestion.id]) {
+                      const newErrors = { ...errors }
+                      delete newErrors[currentQuestion.id]
+                      setErrors(newErrors)
+                    }
+                  }}
                 />
               </motion.div>
 

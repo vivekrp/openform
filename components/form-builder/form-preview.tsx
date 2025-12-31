@@ -119,7 +119,7 @@ export function FormPreview({
               </div>
             )}
 
-            {(question.type === 'multiple_choice' || question.type === 'multi_select') && (
+            {(question.type === 'dropdown' || question.type === 'checkboxes') && (
               <div className="space-y-2">
                 {(question.options || []).map((option, i) => (
                   <div 
@@ -131,7 +131,7 @@ export function FormPreview({
                     }}
                   >
                     <div 
-                      className={`w-6 h-6 rounded-${question.type === 'multiple_choice' ? 'full' : 'md'} border-2 flex items-center justify-center`}
+                      className={`w-6 h-6 rounded-${question.type === 'dropdown' ? 'full' : 'md'} border-2 flex items-center justify-center`}
                       style={{ borderColor: theme.primaryColor }}
                     >
                       <span className="text-xs font-medium" style={{ color: theme.primaryColor }}>

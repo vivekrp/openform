@@ -44,7 +44,7 @@ export const questionTypes: QuestionTypeInfo[] = [
     },
   },
   {
-    type: 'multiple_choice',
+    type: 'dropdown',
     label: 'Dropdown',
     description: 'Select one option from a list',
     icon: List,
@@ -53,7 +53,7 @@ export const questionTypes: QuestionTypeInfo[] = [
     },
   },
   {
-    type: 'multi_select',
+    type: 'checkboxes',
     label: 'Checkboxes',
     description: 'Select multiple options from a list',
     icon: CheckSquare,

@@ -10,8 +10,8 @@ export type Json =
 export type QuestionType =
   | 'short_text'
   | 'long_text'
-  | 'multiple_choice'
-  | 'multi_select'
+  | 'dropdown'
+  | 'checkboxes'
   | 'email'
   | 'phone'
   | 'number'
@@ -52,7 +52,7 @@ export interface QuestionConfig {
   description?: string
   required: boolean
   // Type-specific options
-  options?: string[] // For multiple_choice and multi_select
+  options?: string[] // For dropdown and checkboxes
   minValue?: number // For rating (1-5 stars) or opinion_scale (1-10)
   maxValue?: number
   allowedFileTypes?: string[] // For file_upload

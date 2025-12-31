@@ -14,6 +14,7 @@ interface QuestionRendererProps {
   theme: ThemeConfig
   error?: string
   onSubmit: (skipValidation?: boolean) => void
+  onClearError?: () => void
 }
 
 export function QuestionRenderer({ 
@@ -22,7 +23,8 @@ export function QuestionRenderer({
   onChange, 
   theme,
   error,
-  onSubmit 
+  onSubmit,
+  onClearError
 }: QuestionRendererProps) {
   const [isFocused, setIsFocused] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -81,7 +83,7 @@ export function QuestionRenderer({
         />
       )
 
-    case 'multiple_choice':
+    case 'dropdown':
       return (
         <div className="space-y-3">
           {(question.options || []).map((option, index) => {
@@ -89,12 +91,14 @@ export function QuestionRenderer({
             return (
               <motion.button
                 key={index}
+                type="button"
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
                   onChange(option)
-                  // Auto-advance after selection, skip validation since we just selected
-                  setTimeout(() => onSubmit(true), 300)
+                  onClearError?.()
                 }}
                 className="w-full flex items-center gap-4 p-4 rounded-xl border-2 text-left transition-all"
                 style={{
@@ -125,7 +129,7 @@ export function QuestionRenderer({
         </div>
       )
 
-    case 'multi_select':
+    case 'checkboxes':
       const selectedValues = Array.isArray(value) ? value : []
       return (
         <div className="space-y-3">
@@ -182,11 +186,15 @@ export function QuestionRenderer({
             return (
               <motion.button
                 key={option}
+                type="button"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
                   onChange(option)
-                  setTimeout(() => onSubmit(true), 300)
+                  onClearError?.()
+                  onSubmit(true)
                 }}
                 className="flex-1 flex items-center justify-center gap-3 p-5 rounded-xl border-2 transition-all"
                 style={{
@@ -258,11 +266,15 @@ export function QuestionRenderer({
             return (
               <motion.button
                 key={num}
+                type="button"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
                   onChange(num)
-                  setTimeout(() => onSubmit(true), 300)
+                  onClearError?.()
+                  onSubmit(true)
                 }}
                 className="w-12 h-12 md:w-14 md:h-14 rounded-xl border-2 flex items-center justify-center text-lg font-medium transition-all"
                 style={{
