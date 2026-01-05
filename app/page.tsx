@@ -300,10 +300,10 @@ export default async function HomePage() {
 					<p className="text-slate-600 text-sm">© 2026 BetterForm.</p>
 					<div className="flex items-center gap-6">
 						<a
-							href="https://github.com"
+							href="https://betterform.co"
 							className="text-slate-500 hover:text-slate-700 text-sm transition-colors"
 						>
-							GitHub
+							Home
 						</a>
 						<a
 							href="#"
