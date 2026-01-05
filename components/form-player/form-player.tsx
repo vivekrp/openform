@@ -86,27 +86,7 @@ export function FormPlayer({ form }: FormPlayerProps) {
     return true
   }, [currentQuestion, answers, errors])
 
-  const goToNext = useCallback((skipValidation?: boolean) => {
-    // Check both the parameter and the ref for skip validation
-    const shouldSkip = skipValidation || skipNextValidationRef.current
-    skipNextValidationRef.current = false // Reset the ref
-    
-    if (!shouldSkip && !validateCurrentQuestion()) return
-    
-    if (isLastQuestion) {
-      handleSubmit()
-    } else {
-      setDirection(1)
-      setCurrentIndex(prev => Math.min(prev + 1, questions.length - 1))
-    }
-  }, [isLastQuestion, questions.length, validateCurrentQuestion])
-
-  const goToPrevious = useCallback(() => {
-    setDirection(-1)
-    setCurrentIndex(prev => Math.max(prev - 1, 0))
-  }, [])
-
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(async () => {
     if (!validateCurrentQuestion()) return
     
     setIsSubmitting(true)
@@ -125,7 +105,27 @@ export function FormPlayer({ form }: FormPlayerProps) {
     } else {
       setIsSubmitted(true)
     }
-  }
+  }, [validateCurrentQuestion, form.id, answers, supabase])
+
+  const goToNext = useCallback((skipValidation?: boolean) => {
+    // Check both the parameter and the ref for skip validation
+    const shouldSkip = skipValidation || skipNextValidationRef.current
+    skipNextValidationRef.current = false // Reset the ref
+    
+    if (!shouldSkip && !validateCurrentQuestion()) return
+    
+    if (isLastQuestion) {
+      handleSubmit()
+    } else {
+      setDirection(1)
+      setCurrentIndex(prev => Math.min(prev + 1, questions.length - 1))
+    }
+  }, [isLastQuestion, questions.length, validateCurrentQuestion, handleSubmit])
+
+  const goToPrevious = useCallback(() => {
+    setDirection(-1)
+    setCurrentIndex(prev => Math.max(prev - 1, 0))
+  }, [])
 
   const updateAnswer = (questionId: string, value: Json) => {
     setAnswers(prev => ({ ...prev, [questionId]: value }))
