@@ -78,9 +78,9 @@ export default async function HomePage() {
 										Sign in
 									</Button>
 								</Link>
-								<Link href="/login">
+								<Link href="/f/waitlist">
 									<Button className="bg-lavender-dark hover:bg-lavender shadow-lg shadow-lavender-dark/20 transition-all hover:shadow-lavender-dark/30 hover:-translate-y-0.5">
-										Get Started
+										Join Waitlist
 										<ArrowRight className="ml-2 w-4 h-4" />
 									</Button>
 								</Link>
@@ -95,7 +95,7 @@ export default async function HomePage() {
 				<div className="max-w-4xl mx-auto text-center">
 					<div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-lavender-light/30 text-lavender-dark text-sm font-medium mb-8 border border-lavender/30">
 						<Sparkles className="w-4 h-4" />
-						AI Native Form Builder
+						✨ Private Beta
 					</div>
 
 					<h1 className="text-5xl md:text-7xl font-bold text-slate-900 leading-tight mb-6 tracking-tight">
@@ -108,12 +108,12 @@ export default async function HomePage() {
 					</p>
 
 					<div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-						<Link href="/login">
+						<Link href="/f/waitlist">
 							<Button
 								size="lg"
 								className="h-14 px-8 text-lg bg-lavender-dark hover:bg-lavender shadow-xl shadow-lavender-dark/25 transition-all hover:shadow-lavender-dark/35 hover:-translate-y-0.5"
 							>
-								Start creating for free
+								Join the Beta Waitlist
 								<ArrowRight className="ml-2 w-5 h-5" />
 							</Button>
 						</Link>
@@ -276,17 +276,17 @@ export default async function HomePage() {
 						<div className="absolute bottom-0 left-0 w-48 h-48 bg-sky-400/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
 						<h2 className="text-3xl md:text-4xl font-bold mb-4 relative">
-							Ready to create your first form?
+							Get Early Access
 						</h2>
 						<p className="text-lg text-lavender-light mb-8 relative">
-							Join thousands of people using BetterForm to collect responses.
+							BetterForm is currently in private beta. Join the waitlist to be first in line.
 						</p>
-						<Link href="/login">
+						<Link href="/f/waitlist">
 							<Button
 								size="lg"
 								className="h-14 px-8 text-lg bg-white text-lavender-dark hover:bg-lavender-light/30 shadow-xl shadow-lavender-dark/20 relative transition-all hover:-translate-y-0.5"
 							>
-								Get started for free
+								Join the Waitlist
 								<ArrowRight className="ml-2 w-5 h-5" />
 							</Button>
 						</Link>
