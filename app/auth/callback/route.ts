@@ -13,9 +13,17 @@ export async function GET(request: Request) {
     if (!error) {
       return NextResponse.redirect(`${origin}${next}`)
     }
+    
+    // Check if the error is because signups are disabled
+    // Supabase returns "Signups not allowed for this instance" or similar
+    if (error.message?.toLowerCase().includes('signup') || 
+        error.message?.toLowerCase().includes('sign up') ||
+        error.code === 'signup_disabled') {
+      // Redirect new users to the waitlist form
+      return NextResponse.redirect(`${origin}/f/waitlist?from=signup`)
+    }
   }
 
   // Return the user to an error page with instructions
   return NextResponse.redirect(`${origin}/login?error=auth`)
 }
-
