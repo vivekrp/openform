@@ -1,8 +1,8 @@
-# OpenForm
+# BetterForm
 
-A beautiful, open-source TypeForm alternative. Create engaging forms with a one-question-at-a-time experience.
+A beautiful TypeForm alternative. Create engaging forms with a one-question-at-a-time experience.
 
-![OpenForm Logo](logo.jpg)
+![BetterForm Logo](logo.jpg)
 
 ## Features
 
@@ -15,21 +15,21 @@ A beautiful, open-source TypeForm alternative. Create engaging forms with a one-
 
 ## Question types
 
-| Type | Description |
-|------|-------------|
-| Short text | Single line text input |
-| Long text | Multi-line textarea |
-| Dropdown | Select one option |
-| Checkboxes | Select multiple options |
-| Email | Email with validation |
-| Phone | Phone number input |
-| Number | Numeric input |
-| Date | Date picker |
-| Rating | Star rating (1-5) |
-| Opinion scale | Numeric scale (1-10) |
-| Yes/No | Binary choice |
-| File upload | Images and PDFs |
-| Website URL | URL with validation |
+| Type          | Description             |
+| ------------- | ----------------------- |
+| Short text    | Single line text input  |
+| Long text     | Multi-line textarea     |
+| Dropdown      | Select one option       |
+| Checkboxes    | Select multiple options |
+| Email         | Email with validation   |
+| Phone         | Phone number input      |
+| Number        | Numeric input           |
+| Date          | Date picker             |
+| Rating        | Star rating (1-5)       |
+| Opinion scale | Numeric scale (1-10)    |
+| Yes/No        | Binary choice           |
+| File upload   | Images and PDFs         |
+| Website URL   | URL with validation     |
 
 ## Tech stack
 
@@ -51,8 +51,8 @@ A beautiful, open-source TypeForm alternative. Create engaging forms with a one-
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/yourusername/openform.git
-cd openform
+git clone https://github.com/vivekrp/betterform.git
+cd betterform
 npm install
 ```
 
@@ -61,18 +61,21 @@ npm install
 1. Create a new project at [supabase.com](https://supabase.com)
 
 2. Run the database schema in SQL Editor:
+
    - Copy the contents of `supabase/schema.sql`
    - Paste and run in Supabase SQL Editor
 
 3. Configure authentication:
 
    **Enable Google OAuth:**
+
    - Go to Authentication, then Providers, then Google
    - Enable and add your Google OAuth credentials
    - Get credentials from [Google Cloud Console](https://console.cloud.google.com)
    - Set redirect URI: `https://YOUR_PROJECT.supabase.co/auth/v1/callback`
 
    **Configure URLs:**
+
    - Go to Authentication, then URL Configuration
    - Site URL: `http://localhost:3000`
    - Add redirect URL: `http://localhost:3000/auth/callback`
@@ -114,7 +117,7 @@ To enable file uploads, configure Cloudflare R2:
 R2_ACCOUNT_ID=your-account-id
 R2_ACCESS_KEY_ID=your-access-key
 R2_SECRET_ACCESS_KEY=your-secret-key
-R2_BUCKET_NAME=openform-uploads
+R2_BUCKET_NAME=betterform-uploads
 R2_PUBLIC_URL=https://your-bucket.r2.dev
 ```
 
@@ -132,7 +135,7 @@ Remember to update your Supabase URL Configuration with your production URL.
 ## Project structure
 
 ```
-openform/
+betterform/
 ├── app/
 │   ├── (auth)/           # Auth pages (login)
 │   ├── (dashboard)/      # Protected dashboard pages

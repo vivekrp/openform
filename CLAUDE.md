@@ -1,6 +1,6 @@
-# OpenForm
+# BetterForm
 
-An open-source TypeForm clone built with Next.js 16, Supabase, and Tailwind CSS.
+A TypeForm clone built with Next.js 16, Supabase, and Tailwind CSS.
 
 ## Tech Stack
 
@@ -38,13 +38,13 @@ lib/
 
 ```typescript
 // Server Components / Route Handlers
-import { createClient } from '@/lib/supabase/server'
-const supabase = await createClient()
+import { createClient } from "@/lib/supabase/server";
+const supabase = await createClient();
 
-// Client Components  
-'use client'
-import { createClient } from '@/lib/supabase/client'
-const supabase = createClient()
+// Client Components
+("use client");
+import { createClient } from "@/lib/supabase/client";
+const supabase = createClient();
 ```
 
 ### Database Schema
@@ -68,11 +68,13 @@ The form player (`form-player.tsx`) implements TypeForm's signature experience:
 ### Question System
 
 13 question types defined in `lib/questions.ts`. Each has:
+
 - Type identifier (snake_case: `short_text`, `opinion_scale`, etc.)
 - Label, description, icon (Lucide)
 - Default config (placeholder, options, min/max values)
 
 Add new types by:
+
 1. Add to `QuestionType` union in `database.types.ts`
 2. Add entry to `questionTypes` array in `questions.ts`
 3. Add renderer case in `question-renderer.tsx`
@@ -105,6 +107,7 @@ Use `getThemeCSSVariables()` to apply as inline CSS custom properties.
 ## Public Forms
 
 Forms at `/f/[slug]` are excluded from auth middleware. They:
+
 - Fetch published forms via Supabase with RLS policy allowing public read
 - Submit responses without authentication
 - Display "not found" for unpublished/missing forms
@@ -120,4 +123,3 @@ npm run dev      # Development server (localhost:3000)
 npm run build    # Production build
 npm run lint     # ESLint
 ```
-

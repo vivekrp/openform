@@ -291,7 +291,7 @@ export function ResponsesDashboard({
 					{form.status === "published" && (
 						<Button
 							onClick={copyFormLink}
-							className="mt-6 bg-blue-600 hover:bg-blue-700"
+							className="mt-6 bg-lavender-dark hover:bg-lavender"
 						>
 							<Copy className="w-4 h-4 mr-2" />
 							Copy form link
@@ -362,7 +362,7 @@ export function ResponsesDashboard({
 															>
 																<button
 																	onClick={() => setFilePreview(file)}
-																	className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 transition-colors text-sm group"
+																	className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-lavender-light/30 hover:bg-lavender-light/50 text-lavender-dark transition-colors text-sm group"
 																>
 																	{isImage ? (
 																		<ImageIcon className="w-4 h-4" />
@@ -463,9 +463,9 @@ export function ResponsesDashboard({
 					<DialogHeader>
 						<DialogTitle className="flex items-center gap-2">
 							{filePreview?.type?.startsWith("image/") ? (
-								<ImageIcon className="w-5 h-5 text-blue-600" />
+								<ImageIcon className="w-5 h-5 text-lavender-dark" />
 							) : (
-								<File className="w-5 h-5 text-blue-600" />
+								<File className="w-5 h-5 text-lavender-dark" />
 							)}
 							<span className="truncate">{filePreview?.name}</span>
 						</DialogTitle>
@@ -512,14 +512,14 @@ export function ResponsesDashboard({
 								rel="noopener noreferrer"
 								download={filePreview.name}
 							>
-								<Button className="bg-blue-600 hover:bg-blue-700">
+								<Button className="bg-lavender-dark hover:bg-lavender">
 									<Download className="w-4 h-4 mr-2" />
 									Download
 								</Button>
 							</a>
 						) : (
 							<Button
-								className="bg-blue-600 hover:bg-blue-700"
+								className="bg-lavender-dark hover:bg-lavender"
 								onClick={() => {
 									if (filePreview?.data) {
 										const link = document.createElement("a");

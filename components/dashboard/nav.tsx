@@ -55,7 +55,7 @@ export function DashboardNav({ user }: DashboardNavProps) {
 
         <div className="flex items-center gap-4">
           <Link href="/forms/new">
-            <Button className="bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-600/20 transition-all hover:shadow-blue-600/30 hover:-translate-y-0.5">
+            <Button className="bg-lavender-dark hover:bg-lavender shadow-lg shadow-lavender-dark/20 transition-all hover:shadow-lavender-dark/30 hover:-translate-y-0.5">
               Create Form
             </Button>
           </Link>
@@ -65,7 +65,7 @@ export function DashboardNav({ user }: DashboardNavProps) {
               <Button variant="ghost" className="relative h-10 w-10 rounded-full">
                 <Avatar className="h-10 w-10">
                   <AvatarImage src={avatarUrl} alt={user.email || 'User'} />
-                  <AvatarFallback className="bg-blue-600 text-white font-medium">
+                  <AvatarFallback className="bg-lavender-dark text-white font-medium">
                     {initials}
                   </AvatarFallback>
                 </Avatar>
